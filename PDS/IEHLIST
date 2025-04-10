@@ -1,0 +1,11 @@
+//SBGOLOBL  JOB (ACCT),IEHLIST,REGION=4M,
+//            CLASS=B,MSGCLASS=X,NOTIFY=&SYSUID   ,TYPRUN=HOLD
+//* ----------------------------------------------------------*//
+//* RUN IBM PROGRAM IEHLIST AGAINST THE VTOC OF A FULL VOLUME *//
+//* ----------------------------------------------------------*//
+//ST4      EXEC PGM=IEHLIST
+//SYSPRINT DD SYSOUT=*
+//DD1      DD UNIT=SYSDA,VOL=SER=D5SYS1,DISP=SHR
+//SYSIN    DD *
+ LISTVTOC FORMAT,VOL=3390=D5SYS1
+/*

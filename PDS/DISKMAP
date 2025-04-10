@@ -1,0 +1,34 @@
+//SBGOLOBV  JOB (ACCT#),SBGOLOB,
+// NOTIFY=&SYSUID,
+// CLASS=B,MSGCLASS=X
+//*
+//* ------------------------ *//
+//*     DISKMAP EXECUTION    *//
+//*       CBT FILE 792       *//
+//* --------------------------------------------------------------- *//
+//* PARM='MAP - PRODUCE A TRACK MAP OF VOLUME.                      *//
+//* PARM='MAPONLY - PRODUCE A TRACK MAP BUT *NOT* THE               *//
+//*                 DATASET LISTING                                 *//
+//* PARM='PDS - LIST ALL PDS DIRECTORIES ON VOLUME.                 *//
+//* PARM='FREESPAC - LIST JUST THE FREE-SPACE EXTENTS ON A VOLUME   *//
+//* PARM='EXT- LIST THE EXTENTS OF THE DATASETS.                    *//
+//* PARM='DUMP - LIST IN HEX ALL DSCBS ON VOLUME.                   *//
+//* PARM='EMPTY - LIST ONLY DATASETS THAT ARE EMPTY.                *//
+//* PARM='MODEL - WILL ONLY LIST MODEL DSCBS.                       *//
+//* PARM='SDUMP - LIST IN HEX FORMAT 4 AND 5 DSCBS.                 *//
+//* PARM='VOLS - ONLY USE DDNAMES OF VOLUMEXX    .                  *//
+//* PARM='JDATE - LIST CREATION/EXPIRATION DATES IN JULIAN.         *//
+//* --------------------------------------------------------------- *//
+//*
+//* SYSTEM COMMAND TO APF-AUTHORIZE THE STEPLIB UNTIL NEXT IPL:
+//*
+//*    SETPROG APF,ADD,DSN=SBGOLOB.FILE029.LOADLIB,VOL=WORKE2
+//*
+//*  (WHERE WORKE2 IS THE VOLUME THAT THE STEPLIB DSN IS CATALOGED TO)
+//*    (CHANGE THE DSNAME AND THE VOLSER FOR YOUR INSTALLATION)
+//*
+//* --------------------------------------------------------------- *//
+//DISKMAP EXEC PGM=DISKMAP,PARM='MAPONLY'
+//STEPLIB  DD  DISP=SHR,DSN=SBGOLOB.FILE029.LOADLIB    (APF-AUTHORIZED)
+//SYSPRINT DD  SYSOUT=*
+//VOLUME01 DD  UNIT=3390,DISP=SHR,VOL=SER=D5SYS1
